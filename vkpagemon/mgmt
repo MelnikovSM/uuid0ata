@@ -1,0 +1,8 @@
+#!/bin/bash
+  if [ "$1" == "start" ]; then
+	tmux new -d -s uuid0vkpagemon "/mnt/data/system/uuid0pagemon/main"
+  fi
+
+  if [ "$1" == "stop" ]; then
+	touch /var/lock/uuid0vpm.stop
+  fi

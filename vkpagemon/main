@@ -1,0 +1,33 @@
+#!/bin/bash
+cvsspath="/mnt/data/system/uuid0pagemon/catchvkstate.php"
+date=`date +%Y%m%d`
+logpath="/mnt/data/system/uuid0pagemon/logs/$date-log.log"
+interval="300"
+
+function logandwrite {
+                    echo $1
+					echo $1 >> $logpath
+					 } 
+if [ -a $logpath ]; then
+cat $logpath >> $logpath-old
+echo "=================================" >> $logpath-old
+rm $logpath
+fi
+logandwrite "Starting up uuid0vkpagemon by MelnikovSM.."
+logandwrite "Program startup date: $(date)"
+logandwrite "Log file: $logpath"
+logandwrite "Recheck interval: $interval sec."
+echo '
+Date:                           Status: Last Log-On:        Device:'
+echo '
+Date:                           Status: Last Log-On:        Device:' >> $logpath
+
+while true;do
+logandwrite "[$(date)] $(php $cvsspath)"
+sleep $interval
+if [ -a /var/lock/uuid0vpm.stop ]; then
+rm /var/lock/uuid0vpm.stop
+logandwrite "Shutting down program.."
+break
+fi
+done
