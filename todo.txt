@@ -1,0 +1,25 @@
+Stuff to do on Active Directory Domain Controller:
+
+	Create catalog at <AD SYSVOL>\netlogon\: <script smb share name here>
+	Create network share at \\<dc ip address here>\<script smb share here> using catalog <AD SYSVOL>\netlogon\<script smb share name here>
+
+	At Active Directory User Configuration:
+		Set param:
+			At: Profile >> Log-on script
+			Set value: <script smb share name here>\uuid0ata.vbs or <custom script name here>
+
+	At AD Group Policy Management:
+		Create Policy:
+
+			User Configuration >> Administrative Templates >> Windows Components >> Internet Explorer >> Forbid execute param "Configure at first launch":
+				State: Enabled
+
+			User Configuration >> Administrative Templates >> Windows Components >> Internet Explorer >> Browser Control Panel >> Security >> List of safe web zone:
+				State: Enabled
+				Add param: \\<dc ip address here>\<script smb share name here>
+
+
+Stuff to do on your samba server:
+	Create hidden public network share and set it at telemetric script
+
+How to modify main, telemetric and postcard scripts you can know if analyse scripts source.
