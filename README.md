@@ -1,5 +1,5 @@
 uuid0: Attract Target Attention, telemetric script, and vk page monitoring scripts sources.
-Created by Melnikov Sergey to attract attention (excluding telemetric script) of Batyusheva Anastasia.
+Created by Melnikov Sergey to attract attention (excluding telemetric script) of {target name hidden}.
 Scripts was setted to her school Active Directory useraccount.
 All that scripts working, but result is unsuccessful - total ignore.
 I'm publishing sources code of all scripts hoping it will be useful.
